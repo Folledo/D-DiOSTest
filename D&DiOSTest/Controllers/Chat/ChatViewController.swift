@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: UIViewController {
 	
 	/**
 	* =========================================================================================
@@ -59,6 +59,18 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		tableView.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "chatCell")
 		tableView.tableFooterView = UIView(frame: .zero)
 	}
+
+	
+// MARK: - IBAction
+	@IBAction func backAction(_ sender: Any) {
+		let mainMenuViewController = MenuViewController()
+		self.navigationController?.pushViewController(mainMenuViewController, animated: true)
+	}
+}
+
+
+//MARK: UITableView Delegate and DataSource
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 	
 // MARK: - UITableViewDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,13 +92,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		return 77
 	}
 	
-// MARK: - IBAction
-	@IBAction func backAction(_ sender: Any) {
-		let mainMenuViewController = MenuViewController()
-		self.navigationController?.pushViewController(mainMenuViewController, animated: true)
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
-
 
 /*
 import UIKit

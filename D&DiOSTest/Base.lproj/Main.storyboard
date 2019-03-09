@@ -227,16 +227,17 @@
                                     <navigationItem title="Title" id="Enb-16-RN2"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-9b-UBm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-9b-UBm">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatCell" id="4Sb-Tp-wOk">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatCell" rowHeight="77" id="4Sb-Tp-wOk">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Sb-Tp-wOk" id="vlX-cN-hvu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="76.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="0.0" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -246,11 +247,11 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="EyH-CN-lsK" firstAttribute="trailing" secondItem="TVz-9b-UBm" secondAttribute="trailing" id="FKo-Br-HqP"/>
+                            <constraint firstItem="EyH-CN-lsK" firstAttribute="trailing" secondItem="TVz-9b-UBm" secondAttribute="trailing" constant="16" id="FKo-Br-HqP"/>
                             <constraint firstItem="EyH-CN-lsK" firstAttribute="bottom" secondItem="TVz-9b-UBm" secondAttribute="bottom" id="TUh-Bb-aRe"/>
-                            <constraint firstItem="TVz-9b-UBm" firstAttribute="leading" secondItem="EyH-CN-lsK" secondAttribute="leading" id="cDg-7O-U7g"/>
+                            <constraint firstItem="TVz-9b-UBm" firstAttribute="leading" secondItem="EyH-CN-lsK" secondAttribute="leading" constant="16" id="cDg-7O-U7g"/>
                             <constraint firstItem="TVz-9b-UBm" firstAttribute="top" secondItem="EyH-CN-lsK" secondAttribute="top" id="eIX-zB-tY4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EyH-CN-lsK"/>
