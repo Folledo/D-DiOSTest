@@ -36,9 +36,18 @@ class ChatTableViewCell: UITableViewCell {
 	func setCellData(message: Message) {
 		header.text = message.userName
 		body.text = message.text
+		
+		avatarImageView.layer.cornerRadius = 25 //half of the imageView to make it round
+		avatarImageView.layer.masksToBounds = true
 		avatarImageView.downloaded(fromURL: message.avatarURL)
 	}
-    
+	
+//	override init(frame: CGRect) {
+//		super.init(frame: frame)
+//
+//
+//	}
+	
 }
 
 /*

@@ -45,10 +45,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="height" secondItem="gtW-iy-wVS" secondAttribute="height" constant="16" id="5oG-fV-A79"/>
                             <constraint firstItem="gtW-iy-wVS" firstAttribute="top" secondItem="P6Q-PI-u9p" secondAttribute="top" constant="8" id="NVj-4Z-GTh"/>
                             <constraint firstAttribute="trailing" secondItem="gtW-iy-wVS" secondAttribute="trailing" constant="8" id="RWE-1f-PK2"/>
                             <constraint firstItem="gtW-iy-wVS" firstAttribute="leading" secondItem="P6Q-PI-u9p" secondAttribute="leading" constant="8" id="W0s-ct-Seh"/>
-                            <constraint firstAttribute="bottom" secondItem="gtW-iy-wVS" secondAttribute="bottom" constant="8" id="ofG-JL-aqE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -71,6 +71,7 @@
                     <constraint firstItem="uiv-8c-QMC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Xx8-PW-nCe"/>
                     <constraint firstAttribute="trailingMargin" secondItem="P6Q-PI-u9p" secondAttribute="trailing" constant="20" id="dhh-Jp-fzh"/>
                     <constraint firstItem="ZHP-jb-eIh" firstAttribute="leading" secondItem="uiv-8c-QMC" secondAttribute="trailing" constant="7" id="k5U-YJ-YwR"/>
+                    <constraint firstAttribute="bottom" secondItem="gtW-iy-wVS" secondAttribute="bottom" constant="14.5" id="nFC-j5-0sR"/>
                     <constraint firstItem="P6Q-PI-u9p" firstAttribute="top" secondItem="ZHP-jb-eIh" secondAttribute="bottom" constant="4" id="oke-lc-Jt4"/>
                 </constraints>
             </tableViewCellContentView>

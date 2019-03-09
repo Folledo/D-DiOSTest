@@ -38,21 +38,39 @@ class ChatViewController: UIViewController {
 		configureTable(tableView: chatTable)
 		title = "Chat"
 		
+		fetchMessages()
 	// TODO: Remove test data when we have actual data from the server loaded
-		messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
-		messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
-		messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
-		messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
-		messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
-		messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
-		messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
-		messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
-		messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
+//		messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
+//		messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
+//		messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
+//		messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
+//		messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
+//		messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
+//		messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
+//		messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
+//		messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
 		
-		chatTable.reloadData()
+	
 	}
 	
+	
 // MARK: - Private
+	private func fetchMessages() {
+		ChatClient.fetchChatData({ (messages) in
+			guard let messages = messages else { return }
+			for message in messages {
+				self.messages?.append(message)
+			}
+			
+			DispatchQueue.main.async {
+				self.chatTable.reloadData()
+			}
+		}, withError: { (error) in
+			guard let error = error else { return }
+			Service.presentAlert(on: self, title: "Parse Error", message: error)
+		})
+	}
+	
 	private func configureTable(tableView: UITableView) {
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -71,30 +89,32 @@ class ChatViewController: UIViewController {
 
 //MARK: UITableView Delegate and DataSource
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+//UITableViewDelegate
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 300
+	}
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
+	}
 	
-// MARK: - UITableViewDataSource
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+	}
+	
+//UITableViewDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		var cell: ChatTableViewCell? = nil
-		if cell == nil {
-			let nibs = Bundle.main.loadNibNamed("ChatTableViewCell", owner: self, options: nil)
-			cell = nibs?[0] as? ChatTableViewCell
-		}
-		cell?.setCellData(message: messages![indexPath.row])
-		return cell!
+		
+//		tableView.estimatedRowHeight = 200
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
+		cell.setCellData(message: messages![indexPath.row])
+		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return messages!.count
 	}
 	
-// MARK: - UITableViewDelegate
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 77
-	}
-	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
 }
 
 /*

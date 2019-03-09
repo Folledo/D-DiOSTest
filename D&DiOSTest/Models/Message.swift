@@ -34,8 +34,9 @@ class Message {
 		userName = name
 		avatarURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/220px-Smiley.svg.png")!
 		text = message
-		
 	}
+	
+	
 	
 }
 
