@@ -8,6 +8,31 @@
 
 import Foundation
 
+class LoginClient {
+	private var session: URLSession?
+	
+	/**
+	* =========================================================================================
+	* INSTRUCTIONS
+	* =========================================================================================
+	* 1) Make a request here to login.
+	*
+	* 2) Using the following endpoint, make a request to login
+	*    URL: http://dev.datechnologies.co/Tests/scripts/login.php
+	*
+	* 3) Don't forget, the endpoint takes two parameters 'username' and 'password'
+	*
+	* 4) A valid email is 'info@datechnologies.co'
+	*    A valid password is 'Test123'
+	**/
+	func login(withUsername username: String?, password: String?, completion: @escaping ([AnyHashable : Any]?) -> Void) {
+		
+	}
+}
+
+
+
+
 /* LoginClient.h
 #import <Foundation/Foundation.h>
 

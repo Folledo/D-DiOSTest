@@ -8,6 +8,16 @@
 
 import Foundation
 
+class ChatClient: NSObject {
+	
+	var session: URLSession?
+	
+	
+	//fetchChatData
+	func fetchChatData(_ completion: @escaping ([Message]?) -> Void, withError errorBlock: @escaping (_ error: String?) -> Void) {
+	}
+}
+
 /*
 //ChatClient.h
 #import <Foundation/Foundation.h>

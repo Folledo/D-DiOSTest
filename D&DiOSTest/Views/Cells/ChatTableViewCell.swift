@@ -9,8 +9,19 @@
 import UIKit
 
 class ChatTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
+	
+//MARK: IBOutlets
+	@IBOutlet weak var header: UILabel!
+	@IBOutlet weak var body: UILabel!
+	@IBOutlet weak var bubbleView: UIView!
+	@IBOutlet weak var avatarImageView: UIImageView!
+	
+//MARK: Properties
+	
+	
+	
+//MARK: LifeCycle
+	override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -20,6 +31,13 @@ class ChatTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+	
+//MARK: Public
+	func setCellData(message: Message) {
+		header.text = message.userName
+		body.text = message.text
+		avatarImageView.downloaded(fromURL: message.avatarURL)
+	}
     
 }
 

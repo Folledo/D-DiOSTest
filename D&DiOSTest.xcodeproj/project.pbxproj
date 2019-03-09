@@ -21,6 +21,10 @@
 		7EF6F01D2233211D00E38B9F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F01C2233211D00E38B9F /* ChatViewController.swift */; };
 		7EF6F01F2233212700E38B9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F01E2233212700E38B9F /* LoginViewController.swift */; };
 		7EF6F0212233213A00E38B9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F0202233213A00E38B9F /* MenuViewController.swift */; };
+		7EF6F02322332CFC00E38B9F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F02222332CFC00E38B9F /* Constants.swift */; };
+		7EF6F0252233804D00E38B9F /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F0242233804D00E38B9F /* MyView.swift */; };
+		7EF6F02922339E8300E38B9F /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F02822339E8300E38B9F /* UIColor+extension.swift */; };
+		7EF6F02B2233B98500E38B9F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6F02A2233B98500E38B9F /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		7EF6F01C2233211D00E38B9F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		7EF6F01E2233212700E38B9F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7EF6F0202233213A00E38B9F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7EF6F02222332CFC00E38B9F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7EF6F0242233804D00E38B9F /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		7EF6F02822339E8300E38B9F /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		7EF6F02A2233B98500E38B9F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				7EF6EFC222331EA100E38B9F /* AppDelegate.swift */,
-				7EF6F00F2233208300E38B9F /* Clients */,
 				7EF6EFC622331EA100E38B9F /* Main.storyboard */,
+				7EF6F00F2233208300E38B9F /* Clients */,
 				7EF6EFD422331F1F00E38B9F /* Models */,
 				7EF6EFD522331F2800E38B9F /* Views */,
 				7EF6EFD622331F2C00E38B9F /* Controllers */,
@@ -97,6 +105,7 @@
 		7EF6EFD522331F2800E38B9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EF6F0242233804D00E38B9F /* MyView.swift */,
 				7EF6F00D2233201700E38B9F /* Cells */,
 			);
 			path = Views;
@@ -116,6 +125,8 @@
 		7EF6EFD722331F3000E38B9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7EF6F02222332CFC00E38B9F /* Constants.swift */,
+				7EF6F02A2233B98500E38B9F /* Service.swift */,
 				7EF6F00E2233203F00E38B9F /* Extensions */,
 			);
 			path = Helpers;
@@ -166,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				7EF6EFD922331FAE00E38B9F /* UIImageView+extension.swift */,
+				7EF6F02822339E8300E38B9F /* UIColor+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,10 +263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF6F0252233804D00E38B9F /* MyView.swift in Sources */,
 				7EF6F01F2233212700E38B9F /* LoginViewController.swift in Sources */,
+				7EF6F02322332CFC00E38B9F /* Constants.swift in Sources */,
+				7EF6F02922339E8300E38B9F /* UIColor+extension.swift in Sources */,
 				7EF6F0212233213A00E38B9F /* MenuViewController.swift in Sources */,
 				7EF6F013223320A000E38B9F /* LoginClient.swift in Sources */,
 				7EF6F0112233209800E38B9F /* ChatClient.swift in Sources */,
+				7EF6F02B2233B98500E38B9F /* Service.swift in Sources */,
 				7EF6F01D2233211D00E38B9F /* ChatViewController.swift in Sources */,
 				7EF6F01B2233211100E38B9F /* AnimationViewController.swift in Sources */,
 				7EF6F016223320DF00E38B9F /* ChatTableViewCell.swift in Sources */,
@@ -416,7 +432,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FolledoSwag.D-DiOSTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -434,7 +450,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FolledoSwag.D-DiOSTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
