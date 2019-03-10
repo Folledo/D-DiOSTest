@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoginClient {
+class LoginClient: NSObject {
 	private var session: URLSession?
 	
 	/**
@@ -25,7 +25,36 @@ class LoginClient {
 	* 4) A valid email is 'info@datechnologies.co'
 	*    A valid password is 'Test123'
 	**/
-	func login(withUsername username: String?, password: String?, completion: @escaping ([AnyHashable : Any]?) -> Void) {
+	class func login(withUsername username: String?, password: String?, completion: @escaping ([String : String]?) -> Void) {
+		
+		let url = URL(string: "http://dev.datechnologies.co/Tests/scripts/login.php")!
+		let request = NSMutableURLRequest(url: url)
+		
+		let task = URLSession.shared.dataTask(with: request as URLRequest) {
+			data, response, error in
+			if error != nil {
+				print(error!.localizedDescription)
+				return
+			} else { //if no error
+				if let urlContent = data {
+					do {
+						let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject //to actually see the URL codes
+//						print(jsonResult)
+						let code = jsonResult["code"]
+						let message = jsonResult["message"]
+						
+						let result = ["code": code, "message": message]
+
+						
+						completion(result as? [String : String])
+
+					} catch {
+						completion(nil)
+					}
+				}
+			}
+		}
+		task.resume()
 		
 	}
 }

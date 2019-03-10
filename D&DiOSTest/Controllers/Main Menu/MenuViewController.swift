@@ -96,25 +96,6 @@ class MenuViewController: UIViewController {
 	}
 	override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 	
-	
-// MARK: - Actions
-	@IBAction func didPressChatButton(_ sender: Any) {
-		performSegue(withIdentifier: kTOCHAT, sender: nil)
-//		let chatViewController = ChatViewController()
-//		navigationController?.pushViewController(chatViewController, animated: true)
-	}
-	
-	@IBAction func didPressLoginButton(_ sender: Any) {
-		performSegue(withIdentifier: kTOLOGIN, sender: nil)
-//		let loginViewController = LoginViewController()
-//		navigationController?.pushViewController(loginViewController, animated: true)
-	}
-	
-	@IBAction func didPressAnimationButton(_ sender: Any) {
-		performSegue(withIdentifier: kTOANIMATION, sender: nil)
-//		let animationViewController = AnimationViewController()
-//		navigationController?.pushViewController(animationViewController, animated: true)
-	}
 }
 
 

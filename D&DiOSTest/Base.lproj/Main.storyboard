@@ -282,7 +282,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="55"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XL1-Vx-GvG">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="info@datechnologies.co" placeholder="Email" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XL1-Vx-GvG">
                                         <rect key="frame" x="24" y="17.5" width="267" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -313,7 +313,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="55"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lit-UN-U66">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test123" placeholder="Password" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lit-UN-U66">
                                         <rect key="frame" x="24" y="17.5" width="267" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -376,9 +376,11 @@
                         <viewLayoutGuide key="safeArea" id="gY2-4Y-6r0"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="XL1-Vx-GvG" id="RvJ-YJ-Mrf"/>
+                        <outlet property="emailView" destination="JYl-bV-bqL" id="pzx-Xq-mYu"/>
                         <outlet property="loginButton" destination="G9A-fz-8js" id="mZc-Nf-tnI"/>
                         <outlet property="passwordTextField" destination="lit-UN-U66" id="mba-hU-uVc"/>
-                        <outlet property="usernameTextField" destination="XL1-Vx-GvG" id="dLh-FK-tOG"/>
+                        <outlet property="passwordView" destination="Msm-aa-fQD" id="EmQ-og-y9L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHa-Dx-qlA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,11 +395,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="L7I-9J-Nwn">
-                                <rect key="frame" x="30" y="164" width="315" height="50"/>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="L7I-9J-Nwn">
+                                <rect key="frame" x="30" y="164" width="315" height="25"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="KRb-QG-EwI"/>
+                                    <constraint firstAttribute="height" constant="25" id="SA2-rv-rG4"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zd5-jV-Xcy" appends="YES" id="LYc-lM-7ud"/>
+                                    <outletCollection property="gestureRecognizers" destination="yVA-PN-Gb5" appends="YES" id="bHB-vj-1IY"/>
+                                    <outletCollection property="gestureRecognizers" destination="p1C-jk-M5G" appends="YES" id="598-PV-QBJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="qck-ea-ONG" appends="YES" id="iYL-7D-72a"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbh-cM-fp4">
                                 <rect key="frame" x="30" y="562" width="315" height="55"/>
@@ -407,7 +416,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="FADE IN">
+                                <state key="normal" title="FADE OUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -416,6 +425,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="mbh-cM-fp4" firstAttribute="centerX" secondItem="i8r-k6-1FH" secondAttribute="centerX" id="IIS-W6-avH"/>
                             <constraint firstItem="i8r-k6-1FH" firstAttribute="bottom" secondItem="mbh-cM-fp4" secondAttribute="bottom" constant="50" id="JWw-wg-yyC"/>
@@ -425,6 +435,9 @@
                             <constraint firstItem="L7I-9J-Nwn" firstAttribute="top" secondItem="i8r-k6-1FH" secondAttribute="top" constant="100" id="vH7-bZ-hSs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i8r-k6-1FH"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="77o-nM-vJ1" appends="YES" id="QFN-dl-AwV"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="fadeButton" destination="mbh-cM-fp4" id="SPE-lX-559"/>
@@ -432,6 +445,27 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mcQ-qz-Tzz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="zd5-jV-Xcy">
+                    <connections>
+                        <action selector="scaleImage:" destination="myE-7J-km4" id="1Da-Ez-LLC"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <rotationGestureRecognizer id="yVA-PN-Gb5">
+                    <connections>
+                        <action selector="rotateImage:" destination="myE-7J-km4" id="MkX-9e-R1Q"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="p1C-jk-M5G">
+                    <connections>
+                        <action selector="panImage:" destination="myE-7J-km4" id="s5s-fv-imJ"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="qck-ea-ONG"/>
+                <tapGestureRecognizer id="77o-nM-vJ1">
+                    <connections>
+                        <action selector="tapImage:" destination="myE-7J-km4" id="yND-d2-Wpe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1224.8" y="829.83508245877067"/>
         </scene>

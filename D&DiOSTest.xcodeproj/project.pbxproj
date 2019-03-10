@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7EE980AC223481F200BA951D /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE980AB223481F200BA951D /* String+extension.swift */; };
 		7EF6EFC322331EA100E38B9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC222331EA100E38B9F /* AppDelegate.swift */; };
 		7EF6EFC822331EA100E38B9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC622331EA100E38B9F /* Main.storyboard */; };
 		7EF6EFCA22331EA700E38B9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC922331EA700E38B9F /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7EE980AB223481F200BA951D /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		7EF6EFBF22331EA100E38B9F /* D&DiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D&DiOSTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF6EFC222331EA100E38B9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EF6EFC722331EA100E38B9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				7EF6EFD922331FAE00E38B9F /* UIImageView+extension.swift */,
 				7EF6F02822339E8300E38B9F /* UIColor+extension.swift */,
+				7EE980AB223481F200BA951D /* String+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				7EF6F01D2233211D00E38B9F /* ChatViewController.swift in Sources */,
 				7EF6F01B2233211100E38B9F /* AnimationViewController.swift in Sources */,
 				7EF6F016223320DF00E38B9F /* ChatTableViewCell.swift in Sources */,
+				7EE980AC223481F200BA951D /* String+extension.swift in Sources */,
 				7EF6F019223320F500E38B9F /* Message.swift in Sources */,
 				7EF6EFF622331FAF00E38B9F /* UIImageView+extension.swift in Sources */,
 				7EF6EFC322331EA100E38B9F /* AppDelegate.swift in Sources */,

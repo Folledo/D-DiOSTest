@@ -21,14 +21,15 @@ let kCOLOR_5F6063: UIColor = UIColor(rgb: 0x5F6063)
 let kCOLOR_0E5C89: UIColor = UIColor(rgb: 0x0E5C89)
 let kCOLOR_F9F9F9: UIColor = UIColor(rgb: 0xF9F9F9)
 
+let kREDCGCOLOR = UIColor.red.cgColor
+let kCLEARCGCOLOR = UIColor.clear.cgColor
+
+
 //fonts
 let kHEADERTEXT: UIFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
 
-//segue identifiers
-let kTOCHAT: String = "toChatSegue"
-let kTOLOGIN: String = "toLoginSegue"
-let kTOANIMATION: String = "toAnimationSegue"
 
+//controller storyboard id
 let kCHATCONTROLLER: String = "chatController"
 let kLOGINCONTROLLER: String = "loginController"
 let kANIMATIONCONTROLLER: String = "animationController"
