@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
 		super.viewDidLoad()
 		title = "Login"
 		
-		emailView.layer.borderWidth = 1
+		emailView.layer.borderWidth = 2
 		emailView.layer.borderColor = kCLEARCGCOLOR
 		passwordView.layer.borderWidth = 1
 		passwordView.layer.borderColor = kCLEARCGCOLOR
@@ -96,8 +96,13 @@ class LoginViewController: UIViewController {
 			
 			let alertController = UIAlertController(title: "Success!", message: "Successfully logged in \(executionTime) milliseconds", preferredStyle: .alert)
 			let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-				Service.toMenuController(on: self)
-//				self.dismiss(animated: true, completion: nil)
+//				Service.toMenuController(on: self) //was wrong
+//				alertController.dismiss(animated: true, completion: { //was wrong as well until StackOverFlow
+//					DispatchQueue.main.async {
+//						self.dismiss(animated: true, completion: nil) //dismiss controller
+//					}
+//				})
+				self.navigationController?.popViewController(animated: true) //because sometimes we forget, this line is learned from https://stackoverflow.com/questions/35807334/how-to-dismiss-a-uiviewcontroller-from-a-uialertcontrollers-uialertaction-handl
 			}
 			alertController.addAction(okAction)
 			present(alertController, animated: true, completion: nil)
