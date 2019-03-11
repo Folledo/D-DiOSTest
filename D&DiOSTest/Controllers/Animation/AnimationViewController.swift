@@ -71,8 +71,8 @@ class AnimationViewController: UIViewController {
 	}
 	
 	@IBAction func panImage(_ sender: UIPanGestureRecognizer) {
-		let location = sender.location(in: view)
-		let velocity = sender.velocity(in: view)
+//		let location = sender.location(in: view)
+//		let velocity = sender.velocity(in: view)
 		let translation = sender.translation(in: view)
 		
 		if sender.state == .began {
@@ -84,6 +84,7 @@ class AnimationViewController: UIViewController {
 		}
 	}
 	//03/10/2019 1:15 AM the app is basically done with simple animations and login controller not working, and chat controller that only meets expectation. That will be changed to a Firebase Login. Then with an actual working messaging app functionality. Maybe animations if I got time, I usually leave that last
+	//03/11/2019 11:45 AM app was finished
 	@IBAction func tapImage(_ sender: UITapGestureRecognizer) {
 		switch sender.numberOfTouches {
 		case 1:
