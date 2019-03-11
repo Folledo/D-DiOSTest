@@ -21,6 +21,14 @@ class Service {
 		on.present(alertVC, animated: true, completion: nil)
 	}
 	
+	static func alertWithActions(on: UIViewController, actions: [UIAlertAction], title: String, message: String) {
+		let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		for action in actions {
+			alertVC.addAction(action)
+		}
+		on.present(alertVC, animated: true, completion: nil)
+	}
+	
 	static func toMenuController(on: UIViewController) {
 		goToController(on: on, withIdentifier: kMENUCONTROLLER)
 	}

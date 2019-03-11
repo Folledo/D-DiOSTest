@@ -16,6 +16,11 @@ extension String {
 		return emailPredicate.evaluate(with: self)
 	}
 	
+	var isValidName: Bool {
+		let regex = "[A-Za-z]*[ ]?[A-Za-z]*[.]?[ ]?[A-Za-z]*" //regex for full name //will take the following name formats, Samuel || Samuel P. || Samuel P. Folledo || Samuel Folledo
+		let test = NSPredicate(format: "SELF MATCHES %@", regex)
+		return test.evaluate(with: self) //evaluate
+	}
 	
 	func trimmedString() -> String { //method that removes string's left and right white spaces and new lines
 		let newWord: String = self.trimmingCharacters(in: .whitespacesAndNewlines)

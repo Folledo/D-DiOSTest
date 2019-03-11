@@ -32,66 +32,71 @@ class MenuViewController: UIViewController {
 	
 // MARK: - Outlets
 	@IBOutlet weak var chatView: MyView!
-	@IBOutlet weak var loginView: MyView!
+	@IBOutlet weak var loginView: UIView!
 	@IBOutlet weak var animationView: MyView!
 	
-	@IBOutlet weak var navItem: UINavigationItem!
+	
+//MARK: Properties
+	var timer = Timer()
+	
 	
 	
 // MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		//title = "Coding Tasks"
 		
 		setupViews()
-		
-		
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		checkCurrentUser()
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		timer.invalidate() //stop timer
+	}
+	
+	
+//MARK: Private Methods
 	private func setupViews() {
 		setupNav()
 		
-		let toChatTap = UITapGestureRecognizer(target: self, action: #selector(handleToChatTapped))
-		self.chatView.isUserInteractionEnabled = true
-		self.chatView.addGestureRecognizer(toChatTap)
-		
-		let toLoginTap = UITapGestureRecognizer(target: self, action: #selector(handleToLoginTapped))
-		self.loginView.isUserInteractionEnabled = true
-		self.loginView.addGestureRecognizer(toLoginTap)
-		
-		let toAnimationTap = UITapGestureRecognizer(target: self, action: #selector(handleToAnimationTapped))
-		self.animationView.isUserInteractionEnabled = true
-		self.animationView.addGestureRecognizer(toAnimationTap)
+		loginView.backgroundColor = .clear
+		loginView.layer.cornerRadius = 8
+		loginView.clipsToBounds = true
+		loginView.layer.borderWidth = 2
 		
 	}
 	
-	@objc func handleToChatTapped() {
-		Service.toChatController(on: self)
-//		let vc = ChatViewController()
-//		navigationController?.pushViewController(vc, animated: true)
+	private func checkCurrentUser() {
+		self.loginView.layer.borderColor = isUserLoggedIn() ? kGREENCGCOLOR : kREDCGCOLOR
+		
+		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(animateLoginView), userInfo: nil, repeats: true)
+		
 	}
 	
-	@objc func handleToLoginTapped() {
-		Service.toLoginController(on: self)
-//		let vc = LoginViewController()
-//		navigationController?.pushViewController(vc, animated: true)
+//MARK: Helpers
+	@objc func animateLoginView() {
+		if loginView.layer.borderWidth == 2 {
+			UIView.animate(withDuration: 1) {
+				self.loginView.layer.borderWidth = 0
+			}
+		} else {
+			UIView.animate(withDuration: 1) {
+				self.loginView.layer.borderWidth = 2
+			}
+		}
 	}
 	
-	@objc func handleToAnimationTapped() {
-		Service.toAnimationController(on: self)
-		let vc = AnimationViewController()
-		navigationController?.pushViewController(vc, animated: true)
-	}
 	
 //NavigationController methods
 	private func setupNav() {
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.navigationBar.barTintColor = kCOLOR_0E5C89 //bar's backgroundColor
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: kHEADERTEXT, NSAttributedString.Key.foregroundColor: kCOLOR_FFFFFF] //turn title to white and font to systemFont with size and weight
-		
 		title = "Coding Tasks"
-		
-		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil) //removes the title when we go to child controller
 	}
 	override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }

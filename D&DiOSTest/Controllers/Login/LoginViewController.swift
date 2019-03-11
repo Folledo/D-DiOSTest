@@ -10,30 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 	
-	/**
-	* =========================================================================================
-	* INSTRUCTIONS
-	* =========================================================================================
-	* 1) Make the UI look like it does in the mock-up.
-	*
-	* 2) Take username and password input from the user using UITextFields
-	*
-	* 3) Using the following endpoint, make a request to login
-	*    URL: http://dev.datechnologies.co/Tests/scripts/login.php
-	*    Parameter One: email
-	*    Parameter Two: password
-	*
-	* 4) A valid email is 'info@datechnologies.co'
-	*    A valid password is 'Test123'
-	*
-	* 5) Calculate how long the API call took in milliseconds
-	*
-	* 6) If the response is an error display the error in a UIAlertView
-	*
-	* 7) If the response is successful display the success message AND how long the API call took in milliseconds in a UIAlertView
-	*
-	* 8) When login is successful, tapping 'OK' in the UIAlertView should bring you back to the main menu.
-	**/
 	
 //MARK: IBOutlets
 	
@@ -50,31 +26,64 @@ class LoginViewController: UIViewController {
 // MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		setupViews()
+		
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if isUserLoggedIn() {
+			let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (action) in
+				User.logOutCurrentUser(withBlock: { (success) in
+					if !success {
+						Service.presentAlert(on: self, title: "Logout Error", message: "Unknown Error logging out. Please try again."); return
+					}
+				})
+			}
+			let noAction = UIAlertAction(title: "No", style: .default) { (action) in
+				self.dismiss(animated: true, completion: nil)
+			}
+			Service.alertWithActions(on: self, actions: [logoutAction, noAction], title: "Hello \(User.currentUser()!.name)", message: "In order to log in, you need to log out first. Would you like to log out?")
+		}
+		
+	}
+	
+	
+	
+//MARK: Private Methods
+	private func setupViews() {
 		title = "Login"
 		
 		emailView.layer.borderWidth = 2
 		emailView.layer.borderColor = kCLEARCGCOLOR
 		passwordView.layer.borderWidth = 1
 		passwordView.layer.borderColor = kCLEARCGCOLOR
+		
+		emailTextField.delegate = self
+		passwordTextField.delegate = self
+		passwordTextField.returnKeyType = .go
+		
+		let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismissTap(_:)))
+		self.view.addGestureRecognizer(tap)
+		
 	}
 	
-	
-	
-// MARK: - Actions
-	@IBAction func didPressLoginButton(_ sender: Any) {
-		
+//login
+	private func login() {
+		var errorCounter = 0
 		let methodStart = Date()
 		
 		guard let email = emailTextField.text?.trimmedString() else {
-			emailView.layer.borderColor = kREDCGCOLOR;
-			return
+			emailView.layer.borderColor = kREDCGCOLOR; return
 		}
 		guard let password = passwordTextField.text?.trimmedString() else {
 			passwordView.layer.borderColor = kREDCGCOLOR; return
-			
 		}
 		
 		if !(email.isValidEmail) { //if email is not valid
+			errorCounter += 1
 			emailView.layer.borderColor = kREDCGCOLOR
 			Service.presentAlert(on: self, title: "Invalid Email", message: "Email format is not valid. Please try again with another email")
 		} else {
@@ -82,36 +91,62 @@ class LoginViewController: UIViewController {
 		}
 		
 		if password.count < 6 {
-			passwordView.layer.borderColor = kREDCGCOLOR
+			errorCounter += 1
+			self.passwordView.layer.borderColor = kREDCGCOLOR
 			Service.presentAlert(on: self, title: "Password Count Error", message: "Password must be at least 6 characters")
+			return
 		} else {
 			passwordView.layer.borderColor = kCLEARCGCOLOR
 		}
 		
 		
-		
-		if email == "info@datechnologies.co" && password == "Test123" {
-			let methodFinish = Date()
-			let executionTime = methodFinish.timeIntervalSince(methodStart) //to get the executionTime
+		switch errorCounter {
+		case 0:
 			
-			let alertController = UIAlertController(title: "Success!", message: "Successfully logged in \(executionTime) milliseconds", preferredStyle: .alert)
-			let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-//				Service.toMenuController(on: self) //was wrong
-//				alertController.dismiss(animated: true, completion: { //was wrong as well until StackOverFlow
-//					DispatchQueue.main.async {
-//						self.dismiss(animated: true, completion: nil) //dismiss controller
-//					}
-//				})
-				self.navigationController?.popViewController(animated: true) //because sometimes we forget, this line is learned from https://stackoverflow.com/questions/35807334/how-to-dismiss-a-uiviewcontroller-from-a-uialertcontrollers-uialertaction-handl
+			User.loginUserWith(email: email, password: password) { (error) in
+				if let error = error {
+					Service.presentAlert(on: self, title: "Login Error", message: error.localizedDescription)
+					return
+				} else {
+			
+				//finished logging in
+					DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+						let methodFinish = Date()
+						let executionTime = methodFinish.timeIntervalSince(methodStart) //to get the executionTime
+						
+						let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+							self.navigationController?.popToRootViewController(animated: true)
+						}
+						Service.alertWithActions(on: self, actions: [okAction], title: "Success!", message: "Successfully logged in \(executionTime) milliseconds")
+					})
+				}
 			}
-			alertController.addAction(okAction)
-			present(alertController, animated: true, completion: nil)
 			
-		} else {
-			
-			Service.presentAlert(on: self, title: "Login Error", message: "There was an error logging in with your credentials. Please try again with a different account")
-			
+		default:
+			Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
+			return
 		}
+		
+//		if emailView.layer.borderColor == kREDCGCOLOR && passwordView.layer.borderColor == kREDCGCOLOR {
+//			if email == "info@datechnologies.co" && password == "Test123" {
+//				let methodFinish = Date()
+//				let executionTime = methodFinish.timeIntervalSince(methodStart) //to get the executionTime
+//
+//				let alertController = UIAlertController(title: "Success!", message: "Successfully logged in \(executionTime) milliseconds", preferredStyle: .alert)
+//				let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//
+//					self.navigationController?.popViewController(animated: true)
+//				}
+//				alertController.addAction(okAction)
+//				present(alertController, animated: true, completion: nil)
+//
+//			} else { //unavailable user
+//				Service.presentAlert(on: self, title: "Login Error", message: "There was an error logging in with your credentials. Please try again with a different account")
+//			}
+//		} else { //input has error
+//			Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
+//		}
+		
 		
 		
 		
@@ -119,7 +154,35 @@ class LoginViewController: UIViewController {
 		
 	}
 	
+//MARK: Helpers
+	@objc func handleDismissTap(_ gesture: UITapGestureRecognizer) { //dismiss fields
+		self.view.endEditing(false)
+	}
+	
+// MARK: - Actions
+	@IBAction func didPressLoginButton(_ sender: Any) {
+		login()
+	}
 	
 	
 	
+	
+	
+}
+
+extension LoginViewController: UITextFieldDelegate {
+	
+	
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		switch textField {
+		case emailTextField:
+			passwordTextField.becomeFirstResponder()
+		case passwordTextField:
+			login() //loging on return click
+		default:
+			textField.resignFirstResponder()
+		}
+		return true
+	}
 }

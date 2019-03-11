@@ -33,7 +33,7 @@ class ChatClient: NSObject {
 								
 								guard let userID = message["user_id"] as? String, let userName = message["name"] as? String, let avatarURL = message["avatar_url"] as? String, let text = message["message"] as? String else { print("missing some parts of message"); return }
 //								print("userID is \(userID)\nname is \(userName)\navatarURL is \(avatarURL)\nmessage is \(text)\n\n\n")
-								fetchedMessages.append(Message(_userID: userID, _userName: userName, _avatarURL: URL(string: avatarURL)!, _text: text))
+								fetchedMessages.append(Message(_userID: userID, _fullName: userName, _avatarURL: URL(string: avatarURL)!, _text: text))
 							}
 							completion(fetchedMessages)
 						}

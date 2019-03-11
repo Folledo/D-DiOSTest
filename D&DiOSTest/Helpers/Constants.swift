@@ -8,11 +8,20 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
 
 let kUSERID: String = "userID"
-let kUSERNAME: String = "userName"
+let kNAME: String = "name"
+let kEMAIL: String = "email"
 let kAVATARURL: String = "avatarURL"
 let kTEXT: String = "text"
+let kCURRENTUSER: String = "currentUser" //for userDefaults
+let kUSER: String = "user" //fore firebase
+let kMESSAGE: String = "message"
+
+let kSMILEYURL: String = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/220px-Smiley.svg.png"
+let firDatabase = Database.database().reference()
+
 
 //colors
 let kCOLOR_FFFFFF: UIColor = UIColor(rgb: 0xFFFFFF)
@@ -23,6 +32,7 @@ let kCOLOR_F9F9F9: UIColor = UIColor(rgb: 0xF9F9F9)
 
 let kREDCGCOLOR = UIColor.red.cgColor
 let kCLEARCGCOLOR = UIColor.clear.cgColor
+let kGREENCGCOLOR = UIColor.green.cgColor
 
 
 //fonts
