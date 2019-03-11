@@ -16,9 +16,6 @@ class ChatTableViewCell: UITableViewCell {
 	@IBOutlet weak var bubbleView: UIView!
 	@IBOutlet weak var avatarImageView: UIImageView!
 	
-//MARK: Properties
-	
-	
 	
 //MARK: LifeCycle
 	override func awakeFromNib() {
@@ -40,13 +37,22 @@ class ChatTableViewCell: UITableViewCell {
 		avatarImageView.layer.cornerRadius = 25 //half of the imageView to make it round
 		avatarImageView.layer.masksToBounds = true
 		avatarImageView.downloaded(fromURL: message.avatarURL)
+		
+		if isUserLoggedIn() {
+			if message.userID == User.currentId() {
+				bubbleView.backgroundColor = kCOLOR_0E5C89
+				body.textColor = .white
+				
+			} else {
+				bubbleView.backgroundColor = .white
+				body.textColor = kCOLOR_1B1E1F
+			}
+		} else {
+			bubbleView.backgroundColor = .white
+			body.textColor = kCOLOR_1B1E1F
+		}
 	}
 	
-//	override init(frame: CGRect) {
-//		super.init(frame: frame)
-//
-//
-//	}
 	
 }
 

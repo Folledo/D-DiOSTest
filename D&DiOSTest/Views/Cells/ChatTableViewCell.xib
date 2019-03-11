@@ -24,7 +24,6 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="MMZ-bQ-rTe"/>
                             <constraint firstAttribute="width" secondItem="uiv-8c-QMC" secondAttribute="height" multiplier="1:1" id="Mcf-VM-0sH"/>
-                            <constraint firstAttribute="height" constant="50" id="ayP-lw-bpg"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHP-jb-eIh">
@@ -66,8 +65,8 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="ZHP-jb-eIh" firstAttribute="top" secondItem="uiv-8c-QMC" secondAttribute="top" id="1cz-YF-BF9"/>
-                    <constraint firstItem="P6Q-PI-u9p" firstAttribute="leading" secondItem="ZHP-jb-eIh" secondAttribute="leading" id="4ZV-f2-862"/>
                     <constraint firstItem="uiv-8c-QMC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FQl-sJ-u94"/>
+                    <constraint firstItem="P6Q-PI-u9p" firstAttribute="leading" secondItem="uiv-8c-QMC" secondAttribute="trailing" constant="7" id="Fuo-C5-ZC6"/>
                     <constraint firstItem="uiv-8c-QMC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Xx8-PW-nCe"/>
                     <constraint firstAttribute="trailingMargin" secondItem="P6Q-PI-u9p" secondAttribute="trailing" constant="20" id="dhh-Jp-fzh"/>
                     <constraint firstItem="ZHP-jb-eIh" firstAttribute="leading" secondItem="uiv-8c-QMC" secondAttribute="trailing" constant="7" id="k5U-YJ-YwR"/>

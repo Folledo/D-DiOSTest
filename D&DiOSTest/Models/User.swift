@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 
-class User {
+class User: NSObject {
 	var name: String
 	var email: String
 	var avatarURL: String
@@ -52,18 +52,14 @@ class User {
 				return
 			}
 			
-//			guard let uid = firUser?.user.uid else { return }
-//			let user = User(_userID: uid, _name: fullName, _email: email)
-//			saveUserLocally(user: user)
-//			saveUserInBackground(user: user)
 			completion(error)
 		}
 	}
 	
-	class func loginUserWith(email: String, password: String, withBlock: @escaping (_ error: Error?) -> Void) { //RE ep.110 1mins
-		Auth.auth().signIn(withEmail: email, password: password) { (firUser, error) in //RE ep.110 2mins
-			if let error = error { //RE ep.110 3mins
-				withBlock(error) //RE ep.110 3mins
+	class func loginUserWith(email: String, password: String, withBlock: @escaping (_ error: Error?) -> Void) {
+		Auth.auth().signIn(withEmail: email, password: password) { (firUser, error) in
+			if let error = error {
+				withBlock(error)
 				return
 			}
 			//RE ep.110 3mins

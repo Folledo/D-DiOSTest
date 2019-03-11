@@ -127,31 +127,6 @@ class LoginViewController: UIViewController {
 			return
 		}
 		
-//		if emailView.layer.borderColor == kREDCGCOLOR && passwordView.layer.borderColor == kREDCGCOLOR {
-//			if email == "info@datechnologies.co" && password == "Test123" {
-//				let methodFinish = Date()
-//				let executionTime = methodFinish.timeIntervalSince(methodStart) //to get the executionTime
-//
-//				let alertController = UIAlertController(title: "Success!", message: "Successfully logged in \(executionTime) milliseconds", preferredStyle: .alert)
-//				let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-//
-//					self.navigationController?.popViewController(animated: true)
-//				}
-//				alertController.addAction(okAction)
-//				present(alertController, animated: true, completion: nil)
-//
-//			} else { //unavailable user
-//				Service.presentAlert(on: self, title: "Login Error", message: "There was an error logging in with your credentials. Please try again with a different account")
-//			}
-//		} else { //input has error
-//			Service.presentAlert(on: self, title: "Error", message: "There are errors on the field. Please try again.")
-//		}
-		
-		
-		
-		
-		
-		
 	}
 	
 //MARK: Helpers
@@ -171,8 +146,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: UITextFieldDelegate {
-	
-	
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		switch textField {
