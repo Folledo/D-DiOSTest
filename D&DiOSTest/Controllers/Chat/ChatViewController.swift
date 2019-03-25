@@ -99,9 +99,9 @@ class ChatViewController: UIViewController {
 	}
 	
 	private func sendMessageWithProperties(properties: [String: AnyObject]) {
+		guard let user = User.currentUser() else { Service.presentAlert(on: self, title: "No User", message: "No user has been detected\nPlease login or register to send messages."); return }
 		let ref = Database.database().reference().child(kMESSAGE)
 		let childRef = ref.childByAutoId()
-		guard let user = User.currentUser() else { return }
 		var values: [String: AnyObject] = [kUSERID: user.userID, kNAME: user.name, kAVATARURL: user.avatarURL] as [String: AnyObject]
 		
 		properties.forEach {values[$0] = $1} //basically, forEach key: value pairs from properties, append each one of them to our values dictionary

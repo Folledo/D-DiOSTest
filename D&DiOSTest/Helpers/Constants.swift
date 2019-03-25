@@ -19,6 +19,13 @@ let kCURRENTUSER: String = "currentUser" //for userDefaults
 let kUSER: String = "user" //fore firebase
 let kMESSAGE: String = "message"
 
+let kGAMESESSION: String = "gameSession"
+let kUSERTOGAME: String = "user-game"
+let kPLAYER1: String = "player1"
+let kPLAYER2: String = "player2"
+let kTIMESTAMP: String = "timeStamp"
+
+
 let kSMILEYURL: String = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/220px-Smiley.svg.png"
 let firDatabase = Database.database().reference()
 
