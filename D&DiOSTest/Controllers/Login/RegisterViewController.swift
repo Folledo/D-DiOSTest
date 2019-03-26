@@ -150,7 +150,7 @@ class RegisterViewController: UIViewController {
 	private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any] ) {
 		
 		let ref = Database.database().reference()
-		let usersReference = ref.child(kUSER).child(uid)
+		let usersReference = ref.child(kUSERS).child(uid)
 		usersReference.setValue(values, withCompletionBlock: { (error, ref) in
 			if let error = error {
 				Service.presentAlert(on: self, title: "Register Error", message: error.localizedDescription)

@@ -102,7 +102,7 @@ class User: NSObject {
 
 //+++++++++++++++++++++++++   MARK: Saving user   ++++++++++++++++++++++++++++++++++
 func saveUserInBackground(user: User) {
-	let ref = firDatabase.child(kUSER).child(user.userID)
+	let ref = firDatabase.child(kUSERS).child(user.userID)
 	ref.setValue(userDictionaryFrom(user: user))
 	print("Finished saving user \(user.name) in Firebase")
 }
@@ -121,7 +121,7 @@ func saveUserLocally(user: User) {
 //MARK: Helper fuctions
 
 func fetchUserWith(userId: String, completion: @escaping (_ user: User?) -> Void) {
-	let ref = firDatabase.child(kUSER).queryOrdered(byChild: kUSERID).queryEqual(toValue: userId)
+	let ref = firDatabase.child(kUSERS).queryOrdered(byChild: kUSERID).queryEqual(toValue: userId)
 	
 	ref.observeSingleEvent(of: .value, with: { (snapshot) in
 		if snapshot.exists() {
@@ -148,7 +148,7 @@ func updateCurrentUser(withValues: [String : Any], withBlock: @escaping(_ succes
 		let userObject = userDictionaryFrom(user: currentUser).mutableCopy() as! NSMutableDictionary
 		userObject.setValuesForKeys(withValues)
 		
-		let ref = firDatabase.child(kUSER).child(currentUser.userID)
+		let ref = firDatabase.child(kUSERS).child(currentUser.userID)
 		ref.updateChildValues(withValues) { (error, ref) in
 			if error != nil {
 				withBlock(false)

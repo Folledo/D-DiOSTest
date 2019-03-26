@@ -15,6 +15,8 @@
 		7E87CF992235740D00D159F8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87CF982235740D00D159F8 /* RegisterViewController.swift */; };
 		7E87CF9B2235908D00D159F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87CF9A2235908D00D159F8 /* User.swift */; };
 		7EE980AC223481F200BA951D /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE980AB223481F200BA951D /* String+extension.swift */; };
+		7EEE2904224AA8CB0059361B /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE2902224AA8CB0059361B /* MatchesTableViewCell.swift */; };
+		7EEE2905224AA8CB0059361B /* MatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE2903224AA8CB0059361B /* MatchesTableViewCell.xib */; };
 		7EF6EFC322331EA100E38B9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC222331EA100E38B9F /* AppDelegate.swift */; };
 		7EF6EFC822331EA100E38B9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC622331EA100E38B9F /* Main.storyboard */; };
 		7EF6EFCA22331EA700E38B9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC922331EA700E38B9F /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		7E87CF982235740D00D159F8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7E87CF9A2235908D00D159F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7EE980AB223481F200BA951D /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
+		7EEE2902224AA8CB0059361B /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
+		7EEE2903224AA8CB0059361B /* MatchesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchesTableViewCell.xib; sourceTree = "<group>"; };
 		7EF6EFBF22331EA100E38B9F /* D&DiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D&DiOSTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF6EFC222331EA100E38B9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EF6EFC722331EA100E38B9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			children = (
 				7EF6F014223320DF00E38B9F /* ChatTableViewCell.swift */,
 				7EF6F015223320DF00E38B9F /* ChatTableViewCell.xib */,
+				7EEE2902224AA8CB0059361B /* MatchesTableViewCell.swift */,
+				7EEE2903224AA8CB0059361B /* MatchesTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				7E0CB9C822356DC6004340BF /* GoogleService-Info.plist in Resources */,
 				7EF6EFCA22331EA700E38B9F /* Assets.xcassets in Resources */,
 				7EF6EFC822331EA100E38B9F /* Main.storyboard in Resources */,
+				7EEE2905224AA8CB0059361B /* MatchesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +392,7 @@
 				7EE980AC223481F200BA951D /* String+extension.swift in Sources */,
 				7EF6F019223320F500E38B9F /* Message.swift in Sources */,
 				7EF6EFF622331FAF00E38B9F /* UIImageView+extension.swift in Sources */,
+				7EEE2904224AA8CB0059361B /* MatchesTableViewCell.swift in Sources */,
 				7EF6EFC322331EA100E38B9F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

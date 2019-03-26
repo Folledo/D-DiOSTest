@@ -100,7 +100,7 @@ class ChatViewController: UIViewController {
 	
 	private func sendMessageWithProperties(properties: [String: AnyObject]) {
 		guard let user = User.currentUser() else { Service.presentAlert(on: self, title: "No User", message: "No user has been detected\nPlease login or register to send messages."); return }
-		let ref = Database.database().reference().child(kMESSAGE)
+		let ref = Database.database().reference().child(kMESSAGES)
 		let childRef = ref.childByAutoId()
 		var values: [String: AnyObject] = [kUSERID: user.userID, kNAME: user.name, kAVATARURL: user.avatarURL] as [String: AnyObject]
 		
@@ -116,7 +116,7 @@ class ChatViewController: UIViewController {
 	}
 	
 	func viewFirebaseMessages() {
-		let allMessagesRef = Database.database().reference().child(kMESSAGE)
+		let allMessagesRef = Database.database().reference().child(kMESSAGES)
 		allMessagesRef.observe(.childAdded, with: { (snapshot) in
 			let messageIDs = snapshot.key
 			

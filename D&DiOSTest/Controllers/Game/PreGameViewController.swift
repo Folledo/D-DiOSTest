@@ -33,6 +33,8 @@ class PreGameViewController: UIViewController {
 		
 		disableButton(button: topButton)
 		disableButton(button: bottomButton)
+		
+		incomingRequest()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +98,6 @@ class PreGameViewController: UIViewController {
 	
 //MARK: IBActions
 	@IBAction func topButtonTapped(_ sender: Any) {
-		guard let userEmail = User.currentUser()?.email.trimmedString() else { return }
 		let userId = User.currentId()
 		guard let opponentEmail = self.emailTextField.text?.trimmedString() else { return }
 		
@@ -104,85 +105,69 @@ class PreGameViewController: UIViewController {
 			var opponentUid: String = ""
 			for user in users { //go through each users and find email that matches our textfield
 				if user.email == opponentEmail {
-					opponentUid = user.email //this gives us the user that matches with the email we typed
+					opponentUid = user.userID //this givesUID us the user that matches with the email we typed
 					break
 				} else { continue }
 			}
 			if opponentUid == "" { return }
-//			print(opponentUid)
 			
 //start game session reference with properties/values
-			let ref = firDatabase.child(kGAMESESSION)
+			let ref = firDatabase.child(kGAMESESSIONS)
 			let gameReference = ref.childByAutoId()
 			guard let gameId: String = gameReference.key else { return }
 			let timeStamp: Int = Int(Date().timeIntervalSince1970)
-			let values: [String: AnyObject] = [kPLAYER1 : userEmail, kPLAYER2: opponentEmail, kTIMESTAMP: timeStamp, kGAMESESSION: gameId] as [String: AnyObject] //values for our game session
+			
+			let values: [String: AnyObject] = [kPLAYER1 : userId, kPLAYER2: opponentUid, kTIMESTAMP: timeStamp, kGAMESESSIONS: gameId] as [String: AnyObject] //values for our game session
+			print(values)
 //			properties.forEach {values[$0] = $1}
-			print("1")
 			gameReference.updateChildValues(values) { (error, ref) in //update our values in our reference
 				if let error = error {
 					Service.presentAlert(on: self, title: "Error", message: error.localizedDescription); return
-				}
-				print("2")
-//				DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-//					
-//					
-//					
-//				})
-				
-				
-			}
-			print("3")
-			let currentUserGameRef = firDatabase.child(kUSERTOGAME).child(userId).child(opponentUid)
-			print("4")
-			//					currentUserGameRef.updateChildValues([gameId: 1])
-			currentUserGameRef.updateChildValues([gameId: 1], withCompletionBlock: { (error, ref) in
-				if let error = error  {
-					Service.presentAlert(on: self, title: "Error", message: error.localizedDescription); return
 				} else {
-					print("Creating current user's game reference was successful")
 					
+					let currentUserGameRef = firDatabase.child(kUSERTOGAMESESSIONS).child(userId).child(opponentUid)
+					
+					currentUserGameRef.updateChildValues([gameId: 1], withCompletionBlock: { (error, ref) in
+						if let error = error {
+							Service.presentAlert(on: self, title: "Firebase Error", message: error.localizedDescription); return
+						} else {
+							
+							let opponentUserGameRef = firDatabase.child(kUSERTOGAMESESSIONS).child(opponentUid).child(userId)
+							opponentUserGameRef.updateChildValues([gameId: 1], withCompletionBlock: { (error, ref) in
+								if let error = error  {
+									Service.presentAlert(on: self, title: "Error", message: error.localizedDescription); return
+								} else {
+									print("Creating opponent user's game reference was successful")
+									
+								}
+							})
+						}
+					})
 				}
-				
-			})
-			
-			print("5")
-			let opponentUserGameRef = firDatabase.child(kUSERTOGAME).child(opponentUid).child(userId)
-			print("6")
-			opponentUserGameRef.updateChildValues([gameId: 1], withCompletionBlock: { (error, ref) in
-				if let error = error  {
-					Service.presentAlert(on: self, title: "Error", message: error.localizedDescription); return
-				} else { print("Creating opponent user's game reference was successful") }
-				
-			})
-			print("7")
-			print("Game Session created successfuly!")
-			
-			
-//			let childRef = firDatabase.child(kUSERTOGAME).child(opponentUid).child(User.currentId())
-			
-//			childRef.setValue(userEmail) //same as registering, but with autoId after "request" so new value for the child will not override previous child
-//			let values: [String: String] = [kPLAYER1 : userEmail, kPLAYER2: opponentEmail, kGAMESESSION: childRef.key!]
-//			childRef.setValue(values) { (error, ref) in
-//				if let error = error {
-//					Service.presentAlert(on: self, title: "Error Setting Value", message: error.localizedDescription)
-//					return
-//				}
-////			playerSymbol = "X"
-//
-//
-////				let sessionId:String = "\(userEmail)-\(opponentEmail)" //upon requesting, sessionId is the current user's email and the opponent's email
-////				self.playOnline(sessionId: sessionId)
-//
-//
-//			}
+			}
 		} else { //no text on textfield
 			Service.presentAlert(on: self, title: "Email Not Found", message: "Please try again")
 		}
 	}
 	
+	func incomingRequest() {
+		let requestReference = firDatabase.child(kUSERTOGAMESESSIONS).child(User.currentId()) //MISSING OPPONENT'S UID before we can access the game session id
+		requestReference.observe(.value, with: { (snapshot) in
+			
+			guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else { print("No requests found"); return }
+			for snap in snapshot { //each snap in snapshot is a dictionary //snap.key is the opponentUID and snap.value is the gameSessionId : 1
+				guard let playerRequesting = snap.value as? [String: AnyObject] else { print("snap.value cannot be found"); return } //snap.value = gameSessionId : 1 //has to be converted to [String: AnyObject] in order to get the snap.value properly 
+				print("\n\n\nKeys are\(playerRequesting.keys)\nValues are\(playerRequesting.values)\n\n\n")
+				
+				
+//				self.emailTextField.text = playerRequesting
+			}
+			
+		}, withCancel: nil)
+	}
+	
 	func fetchUsers() {
-		let ref = firDatabase.child(kUSER)
+		let ref = firDatabase.child(kUSERS)
 		ref.observe(.childAdded, with: { (snapshot) in
 //			print("user found")
 			guard let userDic = snapshot.value as? [String: String] else { return }
