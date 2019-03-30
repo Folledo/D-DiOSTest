@@ -21,8 +21,17 @@ let kMESSAGES: String = "message"
 
 let kGAMESESSIONS: String = "gameSessions"
 let kUSERTOGAMESESSIONS: String = "user-gameSessions"
-let kPLAYER1: String = "player1"
-let kPLAYER2: String = "player2"
+let kPLAYER1ID: String = "player1Id"
+let kPLAYER2ID: String = "player2Id"
+let kPLAYER1NAME: String = "player1Name"
+let kPLAYER2NAME: String = "player2Name"
+let kPLAYER1EMAIL: String = "player1Email"
+let kPLAYER2EMAIL: String = "player2Email"
+let kPLAYER1AVATARURL: String = "player1AvatarUrl"
+let kPLAYER2AVATARURL: String = "player2AvatarUrl"
+let kPLAYER1HP: String = "player1Hp"
+let kPLAYER2HP: String = "player2Hp"
+
 let kTIMESTAMP: String = "timeStamp"
 
 
@@ -54,7 +63,7 @@ let kMENUCONTROLLER: String = "menuController"
 
 //func handleInvite() {
 //	guard let opponentEmail = self.emailTextField.text?.trimmedString() else { return }
-//	let properties: [String: AnyObject] = [kPLAYER2: opponentEmail] as [String: AnyObject]
+//	let properties: [String: AnyObject] = [kPLAYER2ID: opponentEmail] as [String: AnyObject]
 //	sendInviteWithProperties(properties: properties)
 //}
 //
@@ -62,7 +71,7 @@ let kMENUCONTROLLER: String = "menuController"
 //	guard let userEmail = User.currentUser()?.email.trimmedString() else { return }
 //	let userId = User.currentId()
 //	let timeStamp: Int = Int(Date().timeIntervalSince1970)
-//	var values: [String: AnyObject] = [kPLAYER1: userEmail, kTIMESTAMP: timeStamp] as [String: AnyObject]
+//	var values: [String: AnyObject] = [kPLAYER1ID: userEmail, kTIMESTAMP: timeStamp] as [String: AnyObject]
 //	properties.forEach{ values[$0] = $1 }
 //	
 //	let ref = firDatabase.child(kGAMESESSIONS)
@@ -140,7 +149,7 @@ let kMENUCONTROLLER: String = "menuController"
 //		//			let childRef = firDatabase.child(kUSERTOGAMESESSIONS).child(opponentUid).child(User.currentId())
 //		
 //		//			childRef.setValue(userEmail) //same as registering, but with autoId after "request" so new value for the child will not override previous child
-//		//			let values: [String: String] = [kPLAYER1 : userEmail, kPLAYER2: opponentEmail, kGAMESESSIONS: childRef.key!]
+//		//			let values: [String: String] = [kPLAYER1ID : userEmail, kPLAYER2ID: opponentEmail, kGAMESESSIONS: childRef.key!]
 //		//			childRef.setValue(values) { (error, ref) in
 //		//				if let error = error {
 //		//					Service.presentAlert(on: self, title: "Error Setting Value", message: error.localizedDescription)

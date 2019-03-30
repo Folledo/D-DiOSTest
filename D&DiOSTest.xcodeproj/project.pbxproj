@@ -12,11 +12,13 @@
 		7E08D61C224843F100D1CF58 /* PreGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E08D61B224843F100D1CF58 /* PreGameViewController.swift */; };
 		7E08D61E22485FE200D1CF58 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E08D61D22485FE200D1CF58 /* Game.swift */; };
 		7E0CB9C822356DC6004340BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CB9C722356DC6004340BF /* GoogleService-Info.plist */; };
+		7E5FCE13224EE66D0037731B /* OpponentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5FCE12224EE66D0037731B /* OpponentUser.swift */; };
 		7E87CF992235740D00D159F8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87CF982235740D00D159F8 /* RegisterViewController.swift */; };
 		7E87CF9B2235908D00D159F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87CF9A2235908D00D159F8 /* User.swift */; };
 		7EE980AC223481F200BA951D /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE980AB223481F200BA951D /* String+extension.swift */; };
 		7EEE2904224AA8CB0059361B /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE2902224AA8CB0059361B /* MatchesTableViewCell.swift */; };
 		7EEE2905224AA8CB0059361B /* MatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EEE2903224AA8CB0059361B /* MatchesTableViewCell.xib */; };
+		7EEE2907224ABF920059361B /* GameInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEE2906224ABF920059361B /* GameInvitation.swift */; };
 		7EF6EFC322331EA100E38B9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC222331EA100E38B9F /* AppDelegate.swift */; };
 		7EF6EFC822331EA100E38B9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC622331EA100E38B9F /* Main.storyboard */; };
 		7EF6EFCA22331EA700E38B9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF6EFC922331EA700E38B9F /* Assets.xcassets */; };
@@ -43,11 +45,13 @@
 		7E08D61B224843F100D1CF58 /* PreGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGameViewController.swift; sourceTree = "<group>"; };
 		7E08D61D22485FE200D1CF58 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7E0CB9C722356DC6004340BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7E5FCE12224EE66D0037731B /* OpponentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentUser.swift; sourceTree = "<group>"; };
 		7E87CF982235740D00D159F8 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7E87CF9A2235908D00D159F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7EE980AB223481F200BA951D /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		7EEE2902224AA8CB0059361B /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
 		7EEE2903224AA8CB0059361B /* MatchesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchesTableViewCell.xib; sourceTree = "<group>"; };
+		7EEE2906224ABF920059361B /* GameInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInvitation.swift; sourceTree = "<group>"; };
 		7EF6EFBF22331EA100E38B9F /* D&DiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D&DiOSTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF6EFC222331EA100E38B9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EF6EFC722331EA100E38B9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				7EF6F018223320F500E38B9F /* Message.swift */,
 				7E87CF9A2235908D00D159F8 /* User.swift */,
 				7E08D61D22485FE200D1CF58 /* Game.swift */,
+				7E5FCE12224EE66D0037731B /* OpponentUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		7EF6EFD522331F2800E38B9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EEE2906224ABF920059361B /* GameInvitation.swift */,
 				7EF6F0242233804D00E38B9F /* MyView.swift */,
 				7EF6F00D2233201700E38B9F /* Cells */,
 			);
@@ -379,6 +385,7 @@
 				7EF6F02322332CFC00E38B9F /* Constants.swift in Sources */,
 				7EF6F02922339E8300E38B9F /* UIColor+extension.swift in Sources */,
 				7E08D61A2248420100D1CF58 /* GameViewController.swift in Sources */,
+				7EEE2907224ABF920059361B /* GameInvitation.swift in Sources */,
 				7EF6F0212233213A00E38B9F /* MenuViewController.swift in Sources */,
 				7EF6F013223320A000E38B9F /* LoginClient.swift in Sources */,
 				7EF6F0112233209800E38B9F /* ChatClient.swift in Sources */,
@@ -390,6 +397,7 @@
 				7EF6F016223320DF00E38B9F /* ChatTableViewCell.swift in Sources */,
 				7E87CF992235740D00D159F8 /* RegisterViewController.swift in Sources */,
 				7EE980AC223481F200BA951D /* String+extension.swift in Sources */,
+				7E5FCE13224EE66D0037731B /* OpponentUser.swift in Sources */,
 				7EF6F019223320F500E38B9F /* Message.swift in Sources */,
 				7EF6EFF622331FAF00E38B9F /* UIImageView+extension.swift in Sources */,
 				7EEE2904224AA8CB0059361B /* MatchesTableViewCell.swift in Sources */,

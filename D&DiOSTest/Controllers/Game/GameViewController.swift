@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
 	
 	
 //MARK: Properties
-	
+	var game: Game?
 	
 	
 //MARK: Lifecycle
@@ -25,9 +25,21 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		updateViewWithGame()
     }
 	
-	
+	private func updateViewWithGame() {
+		guard let currentGame = game, let currentUserUid = User.currentUser()?.userID else { return }
+		gameSessionLabel.text = currentGame.gameId
+		if game!.player1Id == currentUserUid {
+			opponentNameLabel.text = "\(currentGame.player2Name!)"
+			userNameLabel.text = "\(currentGame.player1Name!)"
+		} else {
+			opponentNameLabel.text = "\(currentGame.player1Name!)"
+			userNameLabel.text = "\(currentGame.player2Name!)"
+		}
+		
+	}
 	
 	
     
